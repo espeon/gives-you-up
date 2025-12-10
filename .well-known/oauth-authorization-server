@@ -51,7 +51,7 @@
   "request_uri_parameter_supported": true,
   "require_request_uri_registration": true,
   "jwks_uri": "https://epic.uwu.wang/oauth/jwks",
-  "authorization_endpoint": "javascript:location.href='https://www.bilibili.com/video/BV1xwS4B6E7Y/'//",
+  "authorization_endpoint": "https://www.bilibili.com/video/BV1xwS4B6E7Y/",
   "token_endpoint": "https://epic.uwu.wang/oauth/token",
   "token_endpoint_auth_methods_supported": [
     "none",
