@@ -1,0 +1,7 @@
+{
+	"resource": "https://epic.uwu.wang",
+	"authorization_servers": ["https://epic.uwu.wang"],
+	"scopes_supported": [],
+	"bearer_methods_supported": ["header"],
+	"resource_documentation": "https://atproto.com"
+}

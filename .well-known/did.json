@@ -1,0 +1,24 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/multikey/v1",
+    "https://w3id.org/security/suites/secp256k1-2019/v1"
+  ],
+  "id": "did:web:epic.uwu.wang",
+  "alsoKnownAs": ["at://epic.uwu.wang"],
+  "verificationMethod": [
+    {
+      "id": "did:web:epic.uwu.wang#atproto",
+      "type": "Multikey",
+      "controller": "did:web:epic.uwu.wang",
+      "publicKeyMultibase": "zQ3shPp74h4BoAZ3bEBLfBBGiohF9EsUks1CYr79nSLHu3zjN"
+    }
+  ],
+  "service": [
+    {
+      "id": "#atproto_pds",
+      "type": "AtprotoPersonalDataServer",
+      "serviceEndpoint": "https://epic.uwu.wang"
+    }
+  ]
+}

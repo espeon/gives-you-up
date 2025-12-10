@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>epic.uwu.wang — legendary internet moments</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;600;900&family=JetBrains+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --bg-deep: #0a0014;
+                --bg-mid: #1a0f2e;
+                --accent-cyan: #00fff9;
+                --accent-pink: #ff006e;
+                --accent-yellow: #ffbe0b;
+                --accent-purple: #8338ec;
+                --text-bright: #ffffff;
+                --text-muted: #a0a0c0;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "JetBrains Mono", monospace;
+                background: var(--bg-deep);
+                color: var(--text-bright);
+                overflow-x: hidden;
+                min-height: 100vh;
+                position: relative;
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background:
+                    radial-gradient(
+                        circle at 20% 50%,
+                        rgba(131, 56, 236, 0.15) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        circle at 80% 80%,
+                        rgba(255, 0, 110, 0.15) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        circle at 40% 20%,
+                        rgba(0, 255, 249, 0.1) 0%,
+                        transparent 50%
+                    );
+                z-index: -1;
+                animation: breathe 8s ease-in-out infinite;
+            }
+
+            @keyframes breathe {
+                0%,
+                100% {
+                    opacity: 0.6;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1.05);
+                }
+            }
+
+            .scanlines {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+                pointer-events: none;
+                z-index: 1000;
+                opacity: 0.5;
+            }
+
+            .grain {
+                position: fixed;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+                opacity: 0.03;
+                pointer-events: none;
+                z-index: 999;
+                animation: grain-shift 8s steps(10) infinite;
+            }
+
+            @keyframes grain-shift {
+                0%,
+                100% {
+                    transform: translate(0, 0);
+                }
+                10% {
+                    transform: translate(-5%, -5%);
+                }
+                20% {
+                    transform: translate(-10%, 5%);
+                }
+                30% {
+                    transform: translate(5%, -10%);
+                }
+                40% {
+                    transform: translate(-5%, 15%);
+                }
+                50% {
+                    transform: translate(-10%, 5%);
+                }
+                60% {
+                    transform: translate(15%, 0);
+                }
+                70% {
+                    transform: translate(0, 10%);
+                }
+                80% {
+                    transform: translate(-15%, 0);
+                }
+                90% {
+                    transform: translate(10%, 5%);
+                }
+            }
+
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 2rem;
+                position: relative;
+                z-index: 10;
+            }
+
+            header {
+                text-align: center;
+                padding: 4rem 0 2rem;
+                animation: fade-in-down 1s ease-out;
+            }
+
+            @keyframes fade-in-down {
+                from {
+                    opacity: 0;
+                    transform: translateY(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .logo {
+                font-family: "Unbounded", sans-serif;
+                font-weight: 900;
+                font-size: clamp(3rem, 10vw, 7rem);
+                line-height: 1;
+                background: linear-gradient(
+                    135deg,
+                    var(--accent-cyan),
+                    var(--accent-pink),
+                    var(--accent-yellow)
+                );
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation:
+                    gradient-shift 4s ease infinite,
+                    glitch 5s infinite;
+                position: relative;
+                display: inline-block;
+            }
+
+            @keyframes gradient-shift {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            @keyframes glitch {
+                0%,
+                90%,
+                100% {
+                    transform: translate(0);
+                }
+                92% {
+                    transform: translate(-2px, 2px);
+                }
+                94% {
+                    transform: translate(2px, -2px);
+                }
+                96% {
+                    transform: translate(-2px, -2px);
+                }
+            }
+
+            .tagline {
+                font-family: "Unbounded", sans-serif;
+                font-weight: 300;
+                font-size: clamp(0.9rem, 2vw, 1.2rem);
+                color: var(--text-muted);
+                margin-top: 1rem;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                animation: fade-in 1.5s ease-out 0.3s both;
+            }
+
+            @keyframes fade-in {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .hero {
+                margin: 4rem 0;
+                animation: fade-in-up 1s ease-out 0.5s both;
+            }
+
+            @keyframes fade-in-up {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                margin: 3rem 0;
+            }
+
+            .card {
+                background: rgba(26, 15, 46, 0.6);
+                border: 2px solid transparent;
+                border-radius: 12px;
+                padding: 2rem;
+                backdrop-filter: blur(10px);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
+                animation: fade-in-up 1s ease-out both;
+            }
+
+            .card:nth-child(1) {
+                animation-delay: 0.7s;
+            }
+            .card:nth-child(2) {
+                animation-delay: 0.85s;
+            }
+            .card:nth-child(3) {
+                animation-delay: 1s;
+            }
+            .card:nth-child(4) {
+                animation-delay: 1.15s;
+            }
+            .card:nth-child(5) {
+                animation-delay: 1.3s;
+            }
+            .card:nth-child(6) {
+                animation-delay: 1.45s;
+            }
+
+            .card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-radius: 12px;
+                padding: 2px;
+                background: linear-gradient(
+                    135deg,
+                    var(--accent-cyan),
+                    var(--accent-purple),
+                    var(--accent-pink)
+                );
+                -webkit-mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+                mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .card:hover::before {
+                opacity: 1;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                background: rgba(26, 15, 46, 0.9);
+            }
+
+            .card-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                display: inline-block;
+                animation: float 3s ease-in-out infinite;
+            }
+
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+
+            .card:nth-child(2) .card-icon {
+                animation-delay: 0.5s;
+            }
+            .card:nth-child(3) .card-icon {
+                animation-delay: 1s;
+            }
+            .card:nth-child(4) .card-icon {
+                animation-delay: 1.5s;
+            }
+            .card:nth-child(5) .card-icon {
+                animation-delay: 2s;
+            }
+            .card:nth-child(6) .card-icon {
+                animation-delay: 2.5s;
+            }
+
+            .card h3 {
+                font-family: "Unbounded", sans-serif;
+                font-weight: 600;
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+                color: var(--accent-cyan);
+            }
+
+            .card p {
+                color: var(--text-muted);
+                line-height: 1.6;
+                font-size: 0.95rem;
+            }
+
+            .stats {
+                display: flex;
+                justify-content: center;
+                gap: 4rem;
+                margin: 4rem 0;
+                flex-wrap: wrap;
+                animation: fade-in 1s ease-out 1.6s both;
+            }
+
+            .stat {
+                text-align: center;
+            }
+
+            .stat-number {
+                font-family: "Unbounded", sans-serif;
+                font-weight: 900;
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                background: linear-gradient(
+                    135deg,
+                    var(--accent-pink),
+                    var(--accent-yellow)
+                );
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: block;
+                line-height: 1;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+                color: var(--text-muted);
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                margin-top: 0.5rem;
+            }
+
+            .cta {
+                text-align: center;
+                margin: 5rem 0 3rem;
+                animation: fade-in-up 1s ease-out 1.8s both;
+            }
+
+            .btn {
+                display: inline-block;
+                padding: 1.2rem 3rem;
+                font-family: "Unbounded", sans-serif;
+                font-weight: 600;
+                font-size: 1.1rem;
+                text-decoration: none;
+                color: var(--bg-deep);
+                background: linear-gradient(
+                    135deg,
+                    var(--accent-cyan),
+                    var(--accent-pink)
+                );
+                border-radius: 50px;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+
+            .btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent
+                );
+                transition: left 0.5s ease;
+            }
+
+            .btn:hover::before {
+                left: 100%;
+            }
+
+            .btn:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 40px rgba(0, 255, 249, 0.4);
+            }
+
+            footer {
+                text-align: center;
+                padding: 3rem 0 2rem;
+                color: var(--text-muted);
+                font-size: 0.85rem;
+                border-top: 1px solid rgba(160, 160, 192, 0.1);
+                margin-top: 4rem;
+                animation: fade-in 1s ease-out 2s both;
+            }
+
+            footer a {
+                color: var(--accent-cyan);
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            footer a:hover {
+                color: var(--accent-pink);
+            }
+
+            .pulse {
+                animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.5;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .stats {
+                    gap: 2rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="scanlines"></div>
+        <div class="grain"></div>
+
+        <div class="container">
+            <header>
+                <h1 class="logo">EPIC.UWU.WANG</h1>
+                <p class="tagline">legendary internet moments</p>
+            </header>
+
+            <section class="hero">
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon">🎮</div>
+                        <h3>Achievement Unlocked</h3>
+                        <p>
+                            you've discovered one of the internet's most
+                            uniquely named domains. prepare for epicness.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">✨</div>
+                        <h3>Aesthetic Vibes</h3>
+                        <p>
+                            retro-futuristic design meets terminal culture. no
+                            boring corporate aesthetics allowed.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🚀</div>
+                        <h3>Built Different</h3>
+                        <p>
+                            pure html, css, and good vibes. no frameworks needed
+                            when you have style.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🌐</div>
+                        <h3>Global Reach</h3>
+                        <p>
+                            from .wang to the world. because epic moments
+                            deserve epic domains.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">💫</div>
+                        <h3>Peak Performance</h3>
+                        <p>
+                            lightning fast, zero dependencies. just pure web
+                            technology at its finest.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎨</div>
+                        <h3>Custom Crafted</h3>
+                        <p>
+                            every gradient, every animation, every pixel
+                            designed to surprise and delight.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats">
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Epic Level</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number pulse">💯</span>
+                    <span class="stat-label">Vibes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">420</span>
+                    <span class="stat-label">Dankness</span>
+                </div>
+            </section>
+
+            <section class="cta">
+                <a
+                    href="#"
+                    class="btn"
+                    onclick="
+                        alert('so epic! ✨');
+                        return false;
+                    "
+                    >Experience Epic</a
+                >
+            </section>
+
+            <footer>
+                <p>crafted with chaotic energy somewhere on the internet</p>
+                <p style="margin-top: 0.5rem">epic.uwu.wang © 2025</p>
+            </footer>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const cards = document.querySelectorAll(".card");
+
+                cards.forEach((card, index) => {
+                    card.addEventListener("mouseenter", () => {
+                        card.style.setProperty(
+                            "--hover-glow",
+                            `
+                        0 0 20px rgba(0, 255, 249, 0.5),
+                        0 0 40px rgba(255, 0, 110, 0.3)
+                    `,
+                        );
+                    });
+                });
+
+                const logo = document.querySelector(".logo");
+                let glitchInterval;
+
+                logo.addEventListener("mouseenter", () => {
+                    let count = 0;
+                    glitchInterval = setInterval(() => {
+                        if (count < 3) {
+                            logo.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                            setTimeout(() => {
+                                logo.style.transform = "translate(0, 0)";
+                            }, 50);
+                            count++;
+                        } else {
+                            clearInterval(glitchInterval);
+                        }
+                    }, 100);
+                });
+
+                const statNumbers = document.querySelectorAll(".stat-number");
+                const observerOptions = {
+                    threshold: 0.5,
+                    rootMargin: "0px",
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (
+                            entry.isIntersecting &&
+                            !entry.target.classList.contains("counted")
+                        ) {
+                            entry.target.classList.add("counted");
+                            const text = entry.target.textContent;
+                            if (text === "420") {
+                                let current = 0;
+                                const target = 420;
+                                const increment = target / 50;
+                                const timer = setInterval(() => {
+                                    current += increment;
+                                    if (current >= target) {
+                                        entry.target.textContent = "420";
+                                        clearInterval(timer);
+                                    } else {
+                                        entry.target.textContent =
+                                            Math.floor(current);
+                                    }
+                                }, 20);
+                            }
+                        }
+                    });
+                }, observerOptions);
+
+                statNumbers.forEach((stat) => observer.observe(stat));
+            });
+        </script>
+    </body>
+</html>
